@@ -1,6 +1,6 @@
 #include "lamps.h"
 
-void setupLamps(){
+void Lamps::setupLamps(){
     pinMode(A[0], OUTPUT);
     pinMode(B[0], OUTPUT);
     pinMode(C[0], OUTPUT);
@@ -24,7 +24,7 @@ void setupLamps(){
     pcf.begin();
 }
 
-void displayDigitNAT(uint_least8_t digit, uint_least8_t lamp){
+void Lamps::displayDigitNAT(uint_least8_t digit, uint_least8_t lamp){
   switch(digit) {
     case 0:
         digitalWrite(A[lamp], LOW);
@@ -91,7 +91,7 @@ void displayDigitNAT(uint_least8_t digit, uint_least8_t lamp){
   }
 }
 
-void displayDigitPCF(uint_least8_t digit, uint_least8_t lamp){
+void Lamps::displayDigitPCF(uint_least8_t digit, uint_least8_t lamp){
   switch(digit) {
     case 0:
         pcf.digitalWrite(A[lamp], LOW);
@@ -158,12 +158,12 @@ void displayDigitPCF(uint_least8_t digit, uint_least8_t lamp){
   }
 }
 
-void displayTemperature(std::pair<uint_least8_t, uint_least8_t> temperature){
-    displayDigitPCF(temperature.first, 2);  // Display the tens digit of the temperature
-    displayDigitPCF(temperature.second, 3); // Display the ones digit of the temperature
+void Lamps::displayTemperature(uint_least8_t tempTens, uint_least8_t tempOnes){
+    displayDigitPCF(tempTens, 2);  // Display the tens digit of the temperature
+    displayDigitPCF(tempOnes, 3); // Display the ones digit of the temperature
 }
 
-void displayHumidity(std::pair<uint_least8_t, uint_least8_t> humidity){
-    displayDigitPCF(humidity.first, 2);  // Display the tens digit of the humidity
-    displayDigitPCF(humidity.second, 3); // Display the ones digit of the humidity
+void Lamps::displayHumidity(uint_least8_t humTens, uint_least8_t humOnes){
+    displayDigitPCF(humTens, 2);  // Display the tens digit of the humidity
+    displayDigitPCF(humOnes, 3); // Display the ones digit of the humidity
 }

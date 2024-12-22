@@ -28,16 +28,17 @@
 
 
 class Lamps {
-    public:
+    private:
         PCF8575 pcf = PCF8575(0x20); 
-
+        
         char A[4] = {A1, A2, A3, A4};
         char B[4] = {B1, B2, B3, B4};
         char C[4] = {C1, C2, C3, C4};
         char D[4] = {D1, D2, D3, D4};
 
+    public:
         /*!
-            * @brief  Setup pinMode as OUTPUT for all the lamps, and begin the PCF8575
+            * @brief  Setup pinMode as OUTPUT for all the lamps, and begin the PCF8575, and turn off all lamps
         */
         void setupLamps();
 
@@ -48,7 +49,7 @@ class Lamps {
             *  @param  lamp
             *          The lamp to display the digit on
         */
-        void displayDigitNAT(uint_least8_t digit, uint_least8_t lamp);
+        void displayDigitNAT(unsigned int digit, unsigned int lamp);
 
         /*!
             *  @brief  Display a digit on a specific lamp connected to the PCF8575
@@ -57,28 +58,36 @@ class Lamps {
             *  @param  lamp
             *          The lamp to display the digit on
         */
-        void displayDigitPCF(uint_least8_t digit, uint_least8_t lamp);
+        void displayDigitPCF(unsigned int digit, unsigned int lamp);
 
         /*!
-            *  @brief  Display the temperature on the Nixie tubes
-            *          The tens digit is displayed on the 3rd lamp
-            *          and the ones digit is displayed on the 4th lamp
-            *  @param  tempTens
-            *          The tens digit of the temperature
-            *  @param  tempOnes
-            *          The ones digit of the temperature
+            *  @brief  Display digits on first and second Nixie tubes. 
+            *  @param  first
+            *          Digit to display on the first lamp
+            *  @param  second
+            *          Digit to display on the second lamp
         */
-        void displayTemperature(uint_least8_t tempTens, uint_least8_t tempOnes);
+        void displayOnTwoLeftLamps(unsigned int first, unsigned int second);
 
         /*!
-            *  @brief  Display the humidity on the Nixie tubes. 
-            *          The tens digit is displayed on the 3rd lamp 
-            *          and the ones digit is displayed on the 4th lamp
-            *  @param  humTens
-            *          The tens digit of the humidity
-            *  @param  humOnes
-            *          The ones digit of the humidity
+            *  @brief  Display digits on third and fourth Nixie tubes. 
+            *  @param  first
+            *          Digit to display on the third lamp
+            *  @param  second
+            *          Digit to display on the fourth lamp
         */
-        void displayHumidity(uint_least8_t humTens, uint_least8_t humOnes);
+        void displayOnTwoRightLamps(unsigned int first, unsigned int second);
+
+        /*!
+            *  @brief  Display numbers on all of the Nixie tubes
+            *  @param  first
+            *          Digit to display on the first lamp
+            *  @param  second
+            *          Digit to display on the second lamp
+            *  @param  third
+            *          Digit to display on the third lamp
+            *  @param  fourth
+            *          Digit to display on the fourth lamp
+        */
+        void displayOnAllLamps(unsigned int first, unsigned int second, unsigned int third, unsigned int fourth);
 };
-

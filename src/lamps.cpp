@@ -22,9 +22,15 @@ void Lamps::setupLamps(){
     pcf.pinMode(D[3], OUTPUT);
 
     pcf.begin();
+
+    // Turn off all lamps
+    displayDigitNAT(10, 0); // 10 is the blank digit
+    displayDigitNAT(10, 1); // 10 is the blank digit
+    displayDigitPCF(10, 2); // 10 is the blank digit
+    displayDigitPCF(10, 3); // 10 is the blank digit
 }
 
-void Lamps::displayDigitNAT(uint_least8_t digit, uint_least8_t lamp){
+void Lamps::displayDigitNAT(unsigned int digit, unsigned int lamp){
   switch(digit) {
     case 0:
         digitalWrite(A[lamp], LOW);
@@ -87,11 +93,15 @@ void Lamps::displayDigitNAT(uint_least8_t digit, uint_least8_t lamp){
         digitalWrite(D[lamp], HIGH);
         break;
     default:
+        digitalWrite(A[lamp], HIGH);
+        digitalWrite(B[lamp], HIGH);
+        digitalWrite(C[lamp], HIGH);
+        digitalWrite(D[lamp], HIGH);
         break;
   }
 }
 
-void Lamps::displayDigitPCF(uint_least8_t digit, uint_least8_t lamp){
+void Lamps::displayDigitPCF(unsigned int digit, unsigned int lamp){
   switch(digit) {
     case 0:
         pcf.digitalWrite(A[lamp], LOW);
@@ -154,16 +164,31 @@ void Lamps::displayDigitPCF(uint_least8_t digit, uint_least8_t lamp){
         pcf.digitalWrite(D[lamp], HIGH);
         break;
     default:
+        pcf.digitalWrite(A[lamp], HIGH);
+        pcf.digitalWrite(B[lamp], HIGH);
+        pcf.digitalWrite(C[lamp], HIGH);
+        pcf.digitalWrite(D[lamp], HIGH);
         break;
   }
 }
 
-void Lamps::displayTemperature(uint_least8_t tempTens, uint_least8_t tempOnes){
-    displayDigitPCF(tempTens, 2);  // Display the tens digit of the temperature
-    displayDigitPCF(tempOnes, 3); // Display the ones digit of the temperature
+void Lamps::displayOnTwoLeftLamps(unsigned int first, unsigned int second){
+    displayDigitNAT(first, 0);
+    displayDigitNAT(second, 1);
+    displayDigitPCF(10, 2); // 10 is the blank digit
+    displayDigitPCF(10, 3); // 10 is the blank digit
 }
 
-void Lamps::displayHumidity(uint_least8_t humTens, uint_least8_t humOnes){
-    displayDigitPCF(humTens, 2);  // Display the tens digit of the humidity
-    displayDigitPCF(humOnes, 3); // Display the ones digit of the humidity
+void Lamps::displayOnTwoRightLamps(unsigned int first, unsigned int second){
+    displayDigitNAT(10, 0); // 10 is the blank digit
+    displayDigitNAT(10, 1); // 10 is the blank digit
+    displayDigitPCF(first, 2);
+    displayDigitPCF(second, 3);
+}
+
+void Lamps::displayOnAllLamps(unsigned int first, unsigned int second, unsigned int third, unsigned int fourth){
+    displayDigitNAT(first, 0);
+    displayDigitNAT(second, 1);
+    displayDigitPCF(third, 2);
+    displayDigitPCF(fourth, 3);
 }

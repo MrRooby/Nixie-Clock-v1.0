@@ -22,13 +22,13 @@ class Sensors {
 
         /*!
             *  @brief  Get the temperature from the DHT11 sensor to display on the Nixie tubes
-            *  @return Pair of uint_least8_t values representing the tens and ones of the temperature
+            *  @return Pair of unsigned int values representing the tens and ones of the temperature
         */
-        std::pair<uint_least8_t, uint_least8_t> getTemperature();  
+        std::pair<unsigned int, unsigned int> getTemperature();  
 
         /*!
             *  @brief  Get the humidity from the DHT11 sensor to display on the Nixie tubes
-            *  @return Pair of uint_least8_t values representing the tens and ones of the humidity
+            *  @return Pair of unsigned int values representing the tens and ones of the humidity
         */
-        std::pair<uint_least8_t, uint_least8_t> getHumidity();
+        std::pair<unsigned int, unsigned int> getHumidity();
 };

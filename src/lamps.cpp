@@ -157,3 +157,13 @@ void displayDigitPCF(uint_least8_t digit, uint_least8_t lamp){
         break;
   }
 }
+
+void displayTemperature(std::pair<uint_least8_t, uint_least8_t> temperature){
+    displayDigitPCF(temperature.first, 2);  // Display the tens digit of the temperature
+    displayDigitPCF(temperature.second, 3); // Display the ones digit of the temperature
+}
+
+void displayHumidity(std::pair<uint_least8_t, uint_least8_t> humidity){
+    displayDigitPCF(humidity.first, 2);  // Display the tens digit of the humidity
+    displayDigitPCF(humidity.second, 3); // Display the ones digit of the humidity
+}

@@ -1,16 +1,15 @@
 #pragma once
-
 #include <WiFi.h>
 #include <WiFiClient.h>
+#include <config.h>
 #define BLYNK_PRINT Serial
 #define BLYNK_TEMPLATE_ID "TMPL4JypE_Scz"
 #define BLYNK_TEMPLATE_NAME "Nixie Clock"
-#define BLYNK_AUTH_TOKEN "rvuXBOxn8lWYgScmSlzyxWgQ7gbPc4zd"
-#define WIFI_SSID "TP-Link_7EC6"
-#define WIFI_PASS "bazoka1224"
+#define BLYNK_AUTH_TOKEN std::getenv("BLYNK_AUTH")
+#define WIFI_SSID std::getenv("WIFI_SSID")
+#define WIFI_PASS std::getenv("WIFI_PASS")
 #include <BlynkSimpleEsp32.h> 
 
-BlynkConnection blynkConnection;
 
 
 class BlynkConnection {

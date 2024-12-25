@@ -12,6 +12,7 @@ Lamps lamps;
 Buttons buttons;
 TinyRTC tinyRTC;  
 Program program;
+BlynkConnection blynkConnection;
 
 unsigned int option = 0;
 

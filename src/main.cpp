@@ -3,22 +3,39 @@
 #include "lamps.h"
 #include "sensors.h"
 #include "tinyRTC.h"
+#include "app.h"
+#include "buttons.h"
+#include "program.h"
 
 Sensors sensors;
 Lamps lamps;
+Buttons buttons;
 TinyRTC tinyRTC;  
+Program program;
+
+unsigned int option = 0;
 
 void setup() 
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
-  // Lamps
   lamps.setupLamps();
 
-  // Sensors
   sensors.setupSensors();
+
+  buttons.setupButtons();
 }
 
 void loop() 
 {
+  if(buttons.isSwitchModeButtonPressed())
+  {
+    option++;
+    if(option > 4)
+    {
+      option = 0;
+    }
+  }
+
+  program.chooseOption(option);
 }

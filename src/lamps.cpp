@@ -192,3 +192,111 @@ void Lamps::displayOnAllLamps(unsigned int first, unsigned int second, unsigned 
     displayDigitPCF(third, 2);
     displayDigitPCF(fourth, 3);
 }
+
+void Lamps::testAllCombination(unsigned int number, unsigned int lamp)
+{
+    switch(number){
+        case 0:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 1:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 2:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 3:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 4:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 5:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 6:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 7:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], LOW);
+            break;
+        case 8:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        case 9:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        case 10:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], HIGH);
+            break;  
+        case 11:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], LOW);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        case 12:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        case 13:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], LOW);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        case 14:
+            digitalWrite(A[lamp], LOW);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        case 15:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], HIGH);
+            break;
+        default:
+            digitalWrite(A[lamp], HIGH);
+            digitalWrite(B[lamp], HIGH);
+            digitalWrite(C[lamp], HIGH);
+            digitalWrite(D[lamp], HIGH);
+            break;
+    }
+}

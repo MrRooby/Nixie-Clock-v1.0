@@ -1,5 +1,4 @@
 #pragma once
-
 #include "DHT.h"
 #include <MQUnifiedsensor.h>
 #include <utility>
@@ -8,7 +7,7 @@
 #define DHT11_PIN 19
 #define DHTTYPE DHT11
 
-#define MQ_PIN 34
+#define MQ_PIN 36 // VP - Analog pin for MQ9 sensor
 
 class Sensors {
     public:

@@ -1,3 +1,4 @@
+#pragma once
 #include <TimeLib.h>
 #include <DS1307RTC.h>
 #include <cstring>
@@ -6,9 +7,9 @@
 
 class TinyRTC {
     private:
-        tmElements_t tm;
     
     public:
+        tmElements_t tm;
         /*!
             @brief  Get the current hour
             @param choice 't' for time, 'd' for date

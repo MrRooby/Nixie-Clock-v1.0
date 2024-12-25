@@ -27,4 +27,4 @@ std::tuple<unsigned int, unsigned int, unsigned int, unsigned int> TinyRTC::date
             return std::tuple<unsigned int, unsigned int, unsigned int, unsigned int>(0, 0, 0, 0);
         }
     }
-};
+}

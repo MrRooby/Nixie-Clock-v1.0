@@ -1,18 +1,21 @@
 #include <Arduino.h>
 #include <Wire.h>
+#include <config.h>
+
 #include "lamps.h"
 #include "sensors.h"
-#include "tinyRTC.h"
-#include "app.h"
-#include "buttons.h"
+#include "inputOutput.h"
 #include "program.h"
+#include "timeMenager.h"
+#include "BTCon.h"
+
 
 Sensors sensors;
 Lamps lamps;
-Buttons buttons;
-TinyRTC tinyRTC;  
+InputOutput inputOutput;
 Program program;
-BlynkConnection blynkConnection;
+TimeMenager timeMenager;
+BTCon btCon;
 
 unsigned int option = 0;
 
@@ -24,19 +27,25 @@ void setup()
 
   sensors.setupSensors();
 
-  buttons.setupButtons();
+  inputOutput.setupIO();
+
+  btCon.setupBT();
 }
 
 void loop() 
 {
-  if(buttons.isSwitchModeButtonPressed())
+  if(inputOutput.isSwitchModeButtonPressed())
   {
     option++;
-    if(option > 4)
+    if(option > 3)
     {
       option = 0;
     }
   }
+  
+  program.displayOption(option);
 
-  program.chooseOption(option);
+  btCon.runBT(timeMenager);
+
+  timeMenager.runAlarmClock();
 }

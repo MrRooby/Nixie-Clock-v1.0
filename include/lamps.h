@@ -4,16 +4,14 @@
 
 class Lamps {
     private:
-        //PCF8575 pcf = PCF8575(0x20);
+        PCF8575 pcf = PCF8575(0x20);
         
-        char A[4] = {26, 13, P3, P7};
-        char B[4] = {33, 14, P1, P5};
-        char C[4] = {32, 27, P0, P4};
-        char D[4] = {25, 12, P2, P6};
+        char A[4] = {P7, P3, 13, 26};
+        char B[4] = {P5, P1, 14, 33};
+        char C[4] = {P4, P0, 27, 32};
+        char D[4] = {P6, P2, 12, 25};
 
     public:
-        PCF8575 pcf = PCF8575(0x20); 
-
         /*!
             * @brief  Setup pinMode as OUTPUT for all the lamps, and begin the PCF8575, and turn off all lamps
         */

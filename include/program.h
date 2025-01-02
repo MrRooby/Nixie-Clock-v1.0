@@ -1,14 +1,15 @@
 #pragma once
 #include "lamps.h"
 #include "sensors.h"
-#include "tinyRTC.h"
+#include "timeMenager.h"
 #include <utility>
 
 class Program {
     private:
         Sensors sensors;
         Lamps lamps;
-        TinyRTC tinyRTC;
+        TimeMenager timeMenager;
+        InputOutput inputOutput;
 
     public:
         /*!
@@ -16,7 +17,7 @@ class Program {
             * @param option
             *        First option is time, second is date, third is temperature, fourth is humidity, fifth is CO2 level
         */
-        void chooseOption(unsigned int option);
+        void displayOption(unsigned int option);
 
         /*!
             * @brief Display the time on the Nixie tubes

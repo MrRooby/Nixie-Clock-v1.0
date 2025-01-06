@@ -9,8 +9,7 @@
 
 class InputOutput {
     private:
-        int diods[6] = {P10, P11, P12, P13, P14, P15};
-        PCF8575 pcf = PCF8575(0x20); 
+        int diods[4] = {15, 4, 16, 17};
     public:
         /*! 
             * @brief Set correct pin mode for buttons, buzzer and diods

@@ -37,11 +37,6 @@ void TimeMenager::runAlarmClock()
             inputOutput.buzzConstant(false);
         }
     }
-
-    Serial.print("Time: ");
-    Serial.print(alarmHour);
-    Serial.print(":");
-    Serial.println(alarmMinute);
 }
 
 std::tuple<unsigned int, unsigned int, unsigned int, unsigned int> TimeMenager::dateTimeForLamps(char choice)
@@ -70,6 +65,10 @@ std::tuple<unsigned int, unsigned int, unsigned int, unsigned int> TimeMenager::
         {
             return std::tuple<unsigned int, unsigned int, unsigned int, unsigned int>(0, 0, 0, 0);
         }
+    }
+    else
+    {
+        return std::tuple<unsigned int, unsigned int, unsigned int, unsigned int>(0, 0, 0, 0);
     }
 }
 

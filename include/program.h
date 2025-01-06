@@ -40,5 +40,5 @@ class Program {
         void displayHumidity();
         
         //TODO: Implement this function
-        void displayCO2Level();
+        void runGasLevelAlarm();
 };

@@ -24,10 +24,10 @@ void InputOutput::setupDiods()
     pinMode(INBUILT_LED, OUTPUT);
     digitalWrite(INBUILT_LED, LOW);
 
-    for(int i = 0; i < sizeof(diods); i++)
+    for(int i = 0; i < 4; i++)
     {
-        pcf.pinMode(diods[i], OUTPUT);
-        pcf.digitalWrite(diods[i], HIGH);
+        pinMode(diods[i], OUTPUT);
+        digitalWrite(diods[i], LOW);
     }
 }
 
@@ -67,20 +67,46 @@ void InputOutput::buzzPullse(unsigned int timeOn, unsigned int timeOff, bool cho
 
 bool InputOutput::isSnoozeButtonPressed()
 {
+    static bool buttonWasPressed = false;
+
     if(digitalRead(SNOOZE_BUTTON) == LOW)
     {
-        delay(100);
-        if(digitalRead(SNOOZE_BUTTON) == LOW) { return true; }
+        if(!buttonWasPressed)
+        {
+            delay(100); // debouncing
+            if(digitalRead(SNOOZE_BUTTON) == LOW)
+            {
+                buttonWasPressed = true;
+                return true;
+            }
+        }
+    }
+    else
+    {
+        buttonWasPressed = false;
     }
     return false;
 }
 
 bool InputOutput::isSwitchModeButtonPressed()
-{    
+{
+    static bool buttonWasPressed = false;
+
     if(digitalRead(SWITCH_MODE_BUTTON) == LOW)
     {
-        delay(100); // debouncing
-        if(digitalRead(SWITCH_MODE_BUTTON) == LOW) { return true; }
+        if(!buttonWasPressed)
+        {
+            delay(100); // debouncing
+            if(digitalRead(SWITCH_MODE_BUTTON) == LOW)
+            {
+                buttonWasPressed = true;
+                return true;
+            }
+        }
+    }
+    else
+    {
+        buttonWasPressed = false;
     }
     return false;
 }
@@ -95,26 +121,26 @@ void InputOutput::turnOnSingleLED(unsigned int diodNumber, bool choice)
 {
     if (choice) 
     { 
-        pcf.digitalWrite(diods[diodNumber], LOW); 
+        digitalWrite(diods[diodNumber], HIGH); 
         for(int i = 0; i < sizeof(diods); i++)
         {
             if(i != diodNumber)
             {
-                pcf.digitalWrite(diods[i], HIGH);
+                digitalWrite(diods[i], LOW);
             }
         }
     }
     else        
     { 
-        for(int i = 0; i < sizeof(diods); i++)
+        for(int i = 0; i < 4; i++)
         {
-            pcf.digitalWrite(diods[i], HIGH);
+            digitalWrite(diods[i], LOW);
         }
     }
 }
 
 void InputOutput::turnOnLED(unsigned int diodNumber, bool choice)
 {
-    if (choice) { pcf.digitalWrite(diods[diodNumber], LOW); }
-    else        { pcf.digitalWrite(diods[diodNumber], HIGH); }
+    if (choice) { digitalWrite(diods[diodNumber], HIGH); }
+    else        { digitalWrite(diods[diodNumber], LOW); }
 }

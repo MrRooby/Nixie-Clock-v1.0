@@ -178,20 +178,20 @@ void Lamps::displayDigitPCF(unsigned int digit, unsigned int lamp)
 
 void Lamps::displayOnTwoLeftLamps(unsigned int first, unsigned int second)
 {
-    displayDigitNAT(10, 0); // 10 is the blank digit
-    displayDigitNAT(10, 1); // 10 is the blank digit
+    displayDigitNAT(first, 0); // 10 is the blank digit
+    displayDigitNAT(second, 1); // 10 is the blank digit
 
-    displayDigitPCF(first, 2);
-    displayDigitPCF(second, 3);
+    displayDigitPCF(10, 2);
+    displayDigitPCF(10, 3);
 }
 
 void Lamps::displayOnTwoRightLamps(unsigned int first, unsigned int second)
 {
-    displayDigitNAT(first, 0);
-    displayDigitNAT(second, 1);
+    displayDigitPCF(10, 0); // 10 is the blank digit
+    displayDigitPCF(10, 1); // 10 is the blank digit
 
-    displayDigitPCF(10, 2); // 10 is the blank digit
-    displayDigitPCF(10, 3); // 10 is the blank digit
+    displayDigitNAT(first, 2);
+    displayDigitNAT(second, 3);
 }
 
 void Lamps::displayOnAllLamps(unsigned int first, unsigned int second, unsigned int third, unsigned int fourth)

@@ -30,10 +30,18 @@ void TimeMenager::runAlarmClock()
         && tm.Hour == alarmHour 
         && tm.Minute == alarmMinute )
     {
+        alarmActivated = true;
+        alarmStartTime = millis();
+    }
+
+    if(alarmActivated)
+    {
         inputOutput.buzzConstant(true);
-        if(inputOutput.isSnoozeButtonPressed())
+
+        if(inputOutput.isSnoozeButtonPressed() || millis() - alarmStartTime >= 300000)
         {
             alarmArmed = false;
+            alarmActivated = false;
             inputOutput.buzzConstant(false);
         }
     }

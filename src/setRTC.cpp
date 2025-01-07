@@ -1,4 +1,9 @@
-// // 
+/* A copy-paste code for setting up the DS1307 RTC*/
+
+/*Before running set the secondsOffset variable to take
+the compilation and upload time into consideration to make sure
+the time is reliable */
+
 // #include <Arduino.h>
 // #include <Wire.h>
 // #include <Time.h>

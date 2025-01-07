@@ -15,6 +15,8 @@ class TimeMenager {
         unsigned int alarmMinute;
 
         bool alarmArmed = false;
+        bool alarmActivated = false;
+        unsigned long alarmStartTime = 0;
     public:
         /*! 
             @brief  Set the time for the alarm

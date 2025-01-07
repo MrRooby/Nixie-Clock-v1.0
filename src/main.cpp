@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <config.h>
-#include <PCF8575.h>
 
 #include "lamps.h"
 #include "sensors.h"
@@ -49,7 +48,7 @@ void loop()
 
   btCon.runBT(timeMenager);
 
-  timeMenager.runAlarmClock();
-
   program.runGasLevelAlarm();
+
+  timeMenager.runAlarmClock();
 }

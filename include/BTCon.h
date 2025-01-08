@@ -13,8 +13,21 @@ class BTCon {
         bool connected = false;
         int incoming;
     public:
+        /*!
+            * @brief Setup the Bluetooth connection
+        */
         void setupBT();
 
+        /*!
+            * @brief Get the alarm data from the app
+            * @param timeMenager TimeMenager object for setting the alarm
+        */
         void getAlarmDataFromApp(TimeMenager& timeMenager);
+
+        /*!
+            * @brief Run the Bluetooth connection
+                     If the app is connected, the inbuilt LED will turn on
+            * @param timeMenager TimeMenager object for setting the alarm
+        */
         void runBT(TimeMenager& timeMenager);
 };

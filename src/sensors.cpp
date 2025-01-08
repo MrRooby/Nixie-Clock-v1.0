@@ -4,41 +4,37 @@ void Sensors::setupSensors(){
     dht.begin();
 }
 
-std::pair<unsigned int, unsigned int> Sensors::getTemperature()
+void Sensors::runSensors(int refreshRateMillis)
 {
     unsigned long currentMillis = millis();
-
-    if (currentMillis - lastTempReadMillis < 1000) {
-        return std::make_pair(cachedTempTens, cachedTempOnes);
+    if (currentMillis - lastSensorRunMillis >= refreshRateMillis) {
+        dhtTemperature = dht.readTemperature();
+        dhtHumidity = dht.readHumidity();
+        if(isnan(dhtTemperature) || isnan(dhtHumidity))
+        {
+            dhtTemperature = 99;
+            dhtHumidity = 99;
+        }
+        lastSensorRunMillis = currentMillis;
     }
+}
 
-    float temperature = dht.readTemperature();
-    unsigned int tempTens = (unsigned int)(temperature / 10);
+std::pair<unsigned int, unsigned int> Sensors::getTemperature()
+{
+    unsigned int roundedTemp = static_cast<int>(dhtTemperature + 0.5);
+    unsigned int tempTens = roundedTemp / 10;
     if (tempTens > 9) { tempTens = 9; }
-    unsigned int tempOnes = (int)temperature % 10;
-
-    cachedTempTens = tempTens;
-    cachedTempOnes = tempOnes;
-    lastTempReadMillis = currentMillis;
+    unsigned int tempOnes = roundedTemp % 10;
 
     return std::make_pair(tempTens, tempOnes);
 } 
 
 std::pair<unsigned int, unsigned int> Sensors::getHumidity()
 {
-    unsigned long currentMillis = millis();
-    if (currentMillis - lastHumidityReadMillis < 1000) {
-        return std::make_pair(cachedHumTens, cachedHumOnes);
-    }
-
-    float humidity = dht.readHumidity();
-    unsigned int humTens = (unsigned int)(humidity / 10);
+    unsigned int roundedHum = static_cast<int>(dhtHumidity + 0.5);
+    unsigned int humTens = roundedHum / 10;
     if (humTens > 9) { humTens = 9; }
-    unsigned int humOnes = (int)humidity % 10;
-
-    cachedHumTens = humTens;
-    cachedHumOnes = humOnes;
-    lastHumidityReadMillis = currentMillis;
+    unsigned int humOnes = roundedHum % 10; 
 
     return std::make_pair(humTens, humOnes);
 }
@@ -101,4 +97,14 @@ bool Sensors::isGasLevelDangerous()
         return true;
     }
     return false;
+}
+
+void Sensors::printDHTToSerial()
+{
+    Serial.print("Temperature: ");
+    Serial.print(dhtTemperature);
+    Serial.println(" *C");
+    Serial.print("Humidity: ");
+    Serial.print(dhtHumidity);
+    Serial.println(" %");
 }

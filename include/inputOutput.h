@@ -10,6 +10,7 @@
 class InputOutput {
     private:
         int diods[4] = {15, 4, 16, 17};
+        bool alarmLEDsOn = false;
     public:
         /*! 
             * @brief Set correct pin mode for buttons, buzzer and diods
@@ -82,4 +83,11 @@ class InputOutput {
             * @param choice true for on, false for off
         */
         void turnOnLED(unsigned int diodNumber, bool choice);
+
+        /*!
+            * @brief Blink all diods in interval
+            * @param choice true for on, false for off
+            * @param interval interval in milliseconds
+        */
+        void blinkLEDs(bool choice, unsigned int intervalMillis);
 };

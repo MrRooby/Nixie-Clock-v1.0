@@ -43,12 +43,14 @@ void loop()
       option = 0;
     }
   }
+
+  sensors.runSensors(1000);
   
-  program.displayOption(option);
+  program.runGasLevelAlarm();
 
   btCon.runBT(timeMenager);
 
-  program.runGasLevelAlarm();
-
   timeMenager.runAlarmClock();
+
+  program.displayOption(option, sensors);
 }

@@ -17,7 +17,7 @@ class Program {
             * @param option
             *        First option is time, second is date, third is temperature, fourth is humidity, fifth is CO2 level
         */
-        void displayOption(unsigned int option);
+        void displayOption(unsigned int option, Sensors sensors);
 
         /*!
             * @brief Display the time on the Nixie tubes
@@ -32,13 +32,17 @@ class Program {
         /*!
             * @brief Display the temperature on two right Nixie tubes
         */
-        void displayTemperature();
+        void displayTemperature(Sensors sensors);
 
         /*!
             * @brief Display the humidity on two right Nixie tubes
         */
-        void displayHumidity();
+        void displayHumidity(Sensors sensors);
         
-        //TODO: Implement this function
+        /*!
+            * @brief Keep watch on the gas level and trigger
+                     the alarm if the gas level is above the danger level
+                     (buzzing sound and blinking LEDs)
+        */
         void runGasLevelAlarm();
 };

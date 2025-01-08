@@ -144,3 +144,29 @@ void InputOutput::turnOnLED(unsigned int diodNumber, bool choice)
     if (choice) { digitalWrite(diods[diodNumber], HIGH); }
     else        { digitalWrite(diods[diodNumber], LOW); }
 }
+
+void InputOutput::blinkLEDs(bool choice, unsigned int intervalMillis)
+{
+    if(choice)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            digitalWrite(diods[i], HIGH);
+        }
+        delay(intervalMillis);
+        for(int i = 0; i < 4; i++)
+        {
+            digitalWrite(diods[i], LOW);
+        }
+        delay(intervalMillis);
+        alarmLEDsOn = true;
+    }
+    else if (alarmLEDsOn)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            digitalWrite(diods[i], LOW);
+        }
+        alarmLEDsOn = false;
+    }
+}

@@ -10,7 +10,7 @@
 
 class Sensors {
     private:
-        unsigned long lastTempReadMillis = 0;
+        unsigned long lastSensorRunMillis = 0;
         unsigned int cachedTempTens = 0;
         unsigned int cachedTempOnes = 0;
     
@@ -20,6 +20,11 @@ class Sensors {
 
         float MQ9_R0 = 0.91; // Value to be changed after calibration
         float dangerGasLevel = 1.1;
+
+        float dhtTemperature = 0;
+        float dhtHumidity = 0;
+
+        float mq9SensorData = 0;
     public:
 
         DHT dht = DHT(DHT11_PIN, DHTTYPE);
@@ -29,6 +34,12 @@ class Sensors {
             * @brief  Setup pins, objects and run sensor for the DHT11 and MQ9 sensors
         */
         void setupSensors();
+
+        /*!
+            *  @brief Refresh the sensor data
+            *  @param refreshRateMillis Refresh rate in milliseconds
+        */
+        void runSensors(int refreshRateMillis);  
 
         /*!
             *  @brief  Get the temperature from the DHT11 sensor to display on the Nixie tubes
@@ -61,5 +72,10 @@ class Sensors {
             *  @return True if the gas level is dangerous
         */
         bool isGasLevelDangerous();
+
+        /*!
+            *  @brief  Print the DHT11 sensor data to the serial monitor
+        */
+        void printDHTToSerial();
 
 };

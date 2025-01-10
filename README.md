@@ -13,7 +13,6 @@ A simple ESP32-based Nixie Clock project featuring:
 4. [Bluetooth Application](#bluetooth-application)
 5. [Schematic and Board Photos](#schematic-and-board-photos)
 6. [Device Photos](#device-photos)
-7. [License](#license)
 
 ## Introduction
 This project displays the current time, date, temperature, and humidity on Z573M Nixie tubes. It also includes a gas sensor alarm, and Bluetooth set alarm clock connectivity.
@@ -42,6 +41,3 @@ This project displays the current time, date, temperature, and humidity on Z573M
 
 ## Device Photos
 *(Insert pictures of the completed device here)*
-
-## License
-This project is released under the [MIT License](LICENSE).

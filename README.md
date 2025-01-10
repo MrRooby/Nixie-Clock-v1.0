@@ -38,8 +38,10 @@ This project displays the current time, date, temperature, and humidity on Z573M
 *(pending)*
 
 ## Schematic and Board Photos
-![Schematic]![NixieClockSchematic_page-0001](https://github.com/user-attachments/assets/169872ce-3b00-4a35-8620-c468d94de24f)
-![Board]![NixieClockBoard_page-0001](https://github.com/user-attachments/assets/dbdbc08d-ed43-4839-b277-f150485339af)
+![Schematic]![NixieClockSchematic_page-0001 (1)](https://github.com/user-attachments/assets/29d4446c-3f8b-4dba-bb47-2ea95712e314)
+
+![Board](https://github.com/user-attachments/assets/bd214ba8-f8a9-429c-ac07-abeca7e682f4)
+
 
 ## Device Photos
 *(Insert pictures of the completed device here)*

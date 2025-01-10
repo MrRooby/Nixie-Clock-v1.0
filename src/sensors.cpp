@@ -16,7 +16,10 @@ void Sensors::runSensors(int refreshRateMillis)
             dhtHumidity = 99;
         }
         lastSensorRunMillis = currentMillis;
+        printDHTToSerial();
     }
+
+
 }
 
 std::pair<unsigned int, unsigned int> Sensors::getTemperature()

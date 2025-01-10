@@ -74,18 +74,18 @@ void Program::displayDate()
 
 void Program::displayTemperature(Sensors sensors)
 {
-    auto temperature = sensors.getTemperature();
-    auto humidity = sensors.getHumidity();
+    // auto temperature = sensors.getTemperature();
+    // auto humidity = sensors.getHumidity();
 
-    Serial.print("Temperature: ");
-    Serial.print(temperature.first);
-    Serial.print(temperature.second);
-    Serial.println(" *C");
+    // Serial.print("Temperature: ");
+    // Serial.print(temperature.first);
+    // Serial.print(temperature.second);
+    // Serial.println(" *C");
 
-    Serial.print("Humidity: ");
-    Serial.print(humidity.first);
-    Serial.print(humidity.second);
-    Serial.println(" %");
+    // Serial.print("Humidity: ");
+    // Serial.print(humidity.first);
+    // Serial.print(humidity.second);
+    // Serial.println(" %");
 
     lamps.displayOnTwoRightLamps(sensors.getTemperature().first, 
                                  sensors.getTemperature().second);

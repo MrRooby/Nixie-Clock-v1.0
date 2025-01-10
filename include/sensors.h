@@ -3,8 +3,8 @@
 #include <utility>
 #include <Adafruit_Sensor.h>
 
-#define DHT11_PIN 19
-#define DHTTYPE DHT11
+#define DHT22_PIN 19
+#define DHTTYPE DHT22
 
 #define MQ_PIN 36 // VP - Analog only
 
@@ -27,7 +27,7 @@ class Sensors {
         float mq9SensorData = 0;
     public:
 
-        DHT dht = DHT(DHT11_PIN, DHTTYPE);
+        DHT dht = DHT(DHT22_PIN, DHTTYPE);
 
 
         /*!

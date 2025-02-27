@@ -1,6 +1,6 @@
 # Nixie Clock v1.0
 
-A simple ESP32-based Nixie Clock project featuring:
+An ESP32-based Nixie Clock project featuring:
 - Time and date display
 - Temperature and humidity readings
 - Gas level alarm detection
